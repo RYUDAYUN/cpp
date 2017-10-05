@@ -2,27 +2,34 @@
 int main(){
 	int n,f,x,z;
 	scanf("%d",&n);
-	f=1;
-	for(int i=1;i<=n;i++){
+	for(int i=1;i<n;i++){
 		f=1;
 		z=n-i;
 		x=1;
+		
 		while(z){
 			printf(" ");
 			z--;
 		}
-		while(x<=i){
-		if(f==0){
+		printf("* ");
+		while(x<2*(i-1)-1){
 			printf(" ");
-			f=1;
-		}else{
-			printf("*");
 			x++;
-			f=0;
 		}
+		if(i>1){
+		printf("*");
 	}
+			printf("\n");
+
+
+	}
+
+	
+
+	for(int i=0;i<2*n-1;i++)
+		printf("*");
 	printf("\n");
-	}
+	
 	return 0;
 
 }
