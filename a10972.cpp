@@ -9,7 +9,7 @@ int main(){
 	for(int i=0;i<n;i++){
 		cin>>a[i];
 	}
-	if(next_permutation(a.begin(),a.end())){
+	if(prev_permutation(a.begin(),a.end())){
 		for(int i=0;i<n;i++){
 			cout<<a[i]<<' ';
 		}
