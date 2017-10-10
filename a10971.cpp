@@ -42,7 +42,7 @@ int main(){
 				continue;
 			}else
 				ans=MIN(ans,c);
-		}while(next_permutation(p.begin(),p.end()));
+		}while(next_permutation(p.begin()+1,p.end()));
 		cout<<ans<<endl;
 		return 0;
 }
