@@ -1,27 +1,20 @@
 #include <iostream>
 using namespace std;
-int n,s;
-int ans=0;
-int a[20];
-void go(int i,int sum){
-	if(i==n){
-		if(sum==s){
-			ans++;
-		}
-		return;
-	}
-	go(i+1,sum+a[i]);
-	go(i+1,sum);
-}
 int main(){
+	int a[20];
+	int n,s;
 	cin>>n>>s;
-	for(int i=0;i<n;i++){
+	int ans=0;
+	for(int i=0;i<n;i++)
 		cin>>a[i];
+	for(int i=1;i<(1<<n);i++){
+		int sum=0;
+		for(int k=0;k<n;k++){
+			if(i&(1<<k))
+				sum+=a[k];
+		}
+		if(sum==s)
+			ans++;
 	}
-	go(0,0);
-	if(s==0)
-		ans--;
-	
-	cout<<ans<<endl;
-	return 0;
+	cout<<ans<<'\n';
 }
