@@ -8,8 +8,7 @@ int main(){
 	int m,n,x;
 	int d[100][100];
 	scanf("%d %d",&m,&n);
-	queue<pair<int,int>> q;
-	queue<pair<int,int>> next_queue;
+	priority_queue<pair<int,pair<int,int>>> q;
 	vector<vector<int>> a;
 	for(int i=0;i<n;i++){
 		vector<int> v;
@@ -21,11 +20,11 @@ int main(){
 		a.push_back(v);
 
 	}
-	q.push(make_pair(0,0));
+	q.push(make_pair(0,make_pair(0,0)));
 	d[0][0]=0;
 	while(!q.empty()){
-		int x = q.front().first;
-		int y = q.front().second;
+		int x = q.top().second.first;
+		int y = q.top().second.second;
 		q.pop();
 		for(int k=0;k<4;k++){
 			int nx = x+dx[k];
@@ -34,17 +33,12 @@ int main(){
 				if(d[nx][ny]==-1){
 					if(a[nx][ny]==0){
 						d[nx][ny]=d[x][y];
-						q.push(make_pair(nx,ny));
 					}else{
 						d[nx][ny]=d[x][y]+1;
-						next_queue.push(make_pair(nx,ny));
 					}
+					q.push(make_pair(-d[nx][ny],make_pair(nx,ny)));
 				}
 			}
-		}
-		if(q.empty()){
-			q = next_queue;
-			next_queue=queue<pair<int,int>>();
 		}
 	}
 	printf("%d\n",d[n-1][m-1] );
