@@ -14,14 +14,14 @@ int main(){
 			}else if(j==9){
 				d[i][j]=d[i-1][8];
 			}else{
-				d[i][j]=d[i-1][j+1]+d[i-1][j-1];
+				d[i][j]=(d[i-1][j+1]+d[i-1][j-1])%1000000000;
 			}
 		}
 	}
 	int ans=0;
 	for(int i=0;i<10;i++){
-		ans+=d[n][i];
+		ans=(ans+d[n][i])%1000000000;
 	}
-	cout<<ans<<endl;
+	cout<<ans%1000000000<<endl;
 	return 0;
 }
